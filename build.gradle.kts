@@ -29,6 +29,9 @@ dependencies {
 
     //logging
     implementation("io.github.microutils:kotlin-logging:3.0.5")
+
+    //jwt
+    implementation("com.auth0:java-jwt:4.4.0")
 }
 
 tasks.withType<KotlinCompile> {
