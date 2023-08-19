@@ -1,6 +1,7 @@
 package jjfacotry.issueservice.issue.domain
 
 import jakarta.persistence.*
+import jjfacotry.issueservice.common.BaseEntity
 import jjfacotry.issueservice.issue.domain.enums.IssuePriority
 import jjfacotry.issueservice.issue.domain.enums.IssueType
 
@@ -18,7 +19,7 @@ class Issue(
     @Enumerated(EnumType.STRING)
     val priority: IssuePriority,
     @Enumerated(EnumType.STRING)
-    val status: Status
+    val status: Status = Status.TODO
 
 ) : BaseEntity() {
     enum class Status {

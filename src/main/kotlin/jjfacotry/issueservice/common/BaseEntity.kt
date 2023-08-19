@@ -1,4 +1,4 @@
-package jjfacotry.issueservice.issue.domain
+package jjfacotry.issueservice.common
 
 import jakarta.persistence.EntityListeners
 import jakarta.persistence.MappedSuperclass
