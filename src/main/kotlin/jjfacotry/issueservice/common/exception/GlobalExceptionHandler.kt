@@ -17,7 +17,8 @@ class GlobalExceptionHandler {
         logger.error { ex.message }
 
         return ErrorResponse(
-            code = ex.code,
+            status = ex.code,
+            code = "0000",
             message = ex.message
         )
     }
@@ -27,8 +28,9 @@ class GlobalExceptionHandler {
         logger.error { ex.message }
 
         return ErrorResponse(
-            code = 401,
-            message = "expired token.."
+            status = HttpStatus.UNAUTHORIZED.value(),
+            code = "0001",
+            message = ex.message
         )
     }
 
@@ -37,7 +39,7 @@ class GlobalExceptionHandler {
         logger.error { ex.message }
 
         return ErrorResponse(
-            code = HttpStatus.INTERNAL_SERVER_ERROR.value(),
+            status = HttpStatus.INTERNAL_SERVER_ERROR.value(),
             message = "Internal Server error"
         )
     }
