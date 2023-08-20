@@ -1,5 +1,6 @@
 package jjfacotry.issueservice.issue.presentation
 
+import jjfacotry.issueservice.common.response.CommonResponse
 import jjfacotry.issueservice.issue.domain.Issue
 import jjfacotry.issueservice.issue.domain.IssueInfo
 import jjfacotry.issueservice.issue.domain.IssueService
@@ -11,17 +12,17 @@ class IssueController(
     private val issueService: IssueService
 ) {
     @GetMapping("/{id}")
-    fun get(@PathVariable id: Long): IssueInfo.Main {
-        return issueService.get(id)
+    fun get(@PathVariable id: Long): CommonResponse<IssueInfo.Main> {
+        return CommonResponse(issueService.get(id))
     }
 
     @GetMapping
-    fun getList(@RequestParam(required = false, defaultValue = "TODO") status: Issue.Status): List<IssueInfo.Main> {
-        return issueService.getList(status)
+    fun getList(@RequestParam(required = false, defaultValue = "TODO") status: Issue.Status): CommonResponse<List<IssueInfo.Main>> {
+        return CommonResponse(issueService.getList(status))
     }
 
     @PostMapping
-    fun create(@RequestBody request: IssueDto.CreateRequest): Long {
-        return issueService.create(request)
+    fun create(@RequestBody request: IssueDto.CreateRequest): CommonResponse<Long> {
+        return CommonResponse(issueService.create(request))
     }
 }
