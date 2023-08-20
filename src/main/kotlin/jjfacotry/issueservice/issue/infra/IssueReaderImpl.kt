@@ -13,4 +13,8 @@ class IssueReaderImpl(
     override fun get(id: Long): Issue {
         return issueRepository.findByIdOrNull(id) ?: throw NotFoundException("issue not found")
     }
+
+    override fun getAllByStatus(status: Issue.Status): List<Issue> {
+        return issueRepository.findAllByStatusOrderByCreateDtDesc(status)
+    }
 }

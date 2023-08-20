@@ -11,4 +11,8 @@ class IssueWriterImpl(
     override fun write(issue: Issue): Issue {
         return issueRepository.save(issue)
     }
+
+    override fun delete(id: Long) {
+        issueRepository.deleteById(id)
+    }
 }

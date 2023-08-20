@@ -7,31 +7,37 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class IssueServiceImpl(
     private val issueReader: IssueReader,
-    private val issueWriter: IssueWriter
+    private val issueWriter: IssueWriter,
+    private val issueMapper: IssueMapper
 ) : IssueService {
 
     @Transactional(readOnly = true)
     override fun get(id: Long): IssueInfo.Main {
-        TODO("Not yet implemented")
+        return issueMapper.of(issueReader.get(id))
     }
 
     @Transactional(readOnly = true)
-    override fun getList(): List<IssueInfo.Main> {
-        TODO("Not yet implemented")
+    override fun getList(status: Issue.Status): List<IssueInfo.Main> {
+        return issueReader.getAllByStatus(status).map {
+            issueMapper.of(it)
+        }
     }
 
     @Transactional
     override fun create(request: IssueDto.CreateRequest): Long {
-        TODO("Not yet implemented")
+        return issueWriter.write(request.toEntity()).id!!
     }
 
     @Transactional
     override fun delete(id: Long) {
-        TODO("Not yet implemented")
+        issueWriter.delete(id)
     }
 
     @Transactional
     override fun update(id: Long): Long {
-        TODO("Not yet implemented")
+        val issue = issueReader.get(id)
+
+
+        return issue.id!!
     }
 }

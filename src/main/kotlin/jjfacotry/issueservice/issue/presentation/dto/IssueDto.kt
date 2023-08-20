@@ -13,5 +13,15 @@ class IssueDto {
         var description: String,
         val type: IssueType,
         val priority: IssuePriority,
-    )
+    ){
+        fun toEntity(): Issue{
+            return Issue(
+                userId = userId,
+                summary = summary,
+                description = description,
+                type = type,
+                priority = priority
+            )
+        }
+    }
 }
