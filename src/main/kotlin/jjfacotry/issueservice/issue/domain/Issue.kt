@@ -2,6 +2,7 @@ package jjfacotry.issueservice.issue.domain
 
 import jakarta.persistence.*
 import jjfacotry.issueservice.common.BaseEntity
+import jjfacotry.issueservice.issue.domain.comment.IssueComment
 import jjfacotry.issueservice.issue.domain.enums.IssuePriority
 import jjfacotry.issueservice.issue.domain.enums.IssueType
 
@@ -9,6 +10,8 @@ import jjfacotry.issueservice.issue.domain.enums.IssueType
 class Issue(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
+    @OneToMany(mappedBy = "issue", cascade = [CascadeType.REMOVE])
+    val comments: List<IssueComment> = ArrayList(),
 
     var userId: Long,
     var summary: String,
