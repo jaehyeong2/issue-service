@@ -11,7 +11,7 @@ class Issue(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @OneToMany(mappedBy = "issue", cascade = [CascadeType.REMOVE])
-    val comments: List<IssueComment> = ArrayList(),
+    val comments: MutableList<IssueComment> = ArrayList(),
 
     var userId: Long,
     var summary: String,

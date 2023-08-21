@@ -13,4 +13,9 @@ class IssueComment(
     val issue: Issue,
     var userId: Long,
     var content: String
-) : BaseEntity()
+) : BaseEntity(){
+
+    fun updateContent(content: String){
+        this.content = content
+    }
+}
