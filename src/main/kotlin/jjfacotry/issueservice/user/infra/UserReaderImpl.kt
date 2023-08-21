@@ -17,4 +17,8 @@ class UserReaderImpl(
     override fun getByPhone(phone: String): User {
         return userRepository.findByPhone(phone) ?: throw NotFoundException("user not found")
     }
+
+    override fun getList(): List<User> {
+        return userRepository.findAllByOrderByCreateDtDesc()
+    }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jjfacotry.issueservice.common.BaseEntity
 
 @Entity
 class User(
@@ -16,4 +17,4 @@ class User(
     var password: String,
 
     var phone: String
-)
+) : BaseEntity()
