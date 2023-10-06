@@ -7,6 +7,7 @@ import jjfacotry.issueservice.issue.domain.IssueService
 import jjfacotry.issueservice.issue.presentation.dto.IssueDto
 import org.springframework.web.bind.annotation.*
 
+@RequestMapping("/issue")
 @RestController
 class IssueController(
     private val issueService: IssueService
